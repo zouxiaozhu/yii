@@ -13,7 +13,10 @@ use app\models\ContactForm;
 
 class SiteController extends Controller
 {
-    
+    public function actionView()
+    {
+        echo 'test index get in';
+    }
     
     public function actionEntry()
     {

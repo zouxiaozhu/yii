@@ -8,10 +8,11 @@ use app\models\Country;
 class CountryController extends Controller{
     
     public function actionIndex(){
+        
         $query = Country::find();
         $count = $query->count();
         $page = new Pagination([
-            'defaultPageSize'=>5,
+            'defaultPageSize'=>8,
             'totalCount'=>$count
         ]);
         
@@ -20,7 +21,13 @@ class CountryController extends Controller{
             'countries'=>$country_info,
             'pagination'=>$page
         ]);
-       
-        
+    }
+    
+    public function actionUpdate(){
+        $countries = Country::find()->orderBy('population asc')->asArray()->all();
+        $country = Country::findOne('US');
+        $country->name = 'USA';
+      
+        var_export(($country));
     }
 }
